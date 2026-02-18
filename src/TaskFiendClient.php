@@ -5,6 +5,7 @@ namespace TaskFiend;
 use DateTimeInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use TaskFiend\Data\TasksOnDayResponse;
 
 class TaskFiendClient
 {
@@ -26,15 +27,15 @@ class TaskFiendClient
      *
      * Accepts any DateTimeInterface value, including Carbon instances.
      *
-     * @param  DateTimeInterface $date
-     * @return array
      * @throws GuzzleException
      */
-    public function getTasksOnDay(DateTimeInterface $date): array
+    public function getTasksOnDay(DateTimeInterface $date): TasksOnDayResponse
     {
         $formatted = $date->format('Y-m-d');
         $response = $this->httpClient->get("tasks/on/{$formatted}");
 
-        return json_decode($response->getBody()->getContents(), true);
+        return TasksOnDayResponse::fromArray(
+            json_decode($response->getBody()->getContents(), true)
+        );
     }
 }
