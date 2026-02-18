@@ -1,6 +1,6 @@
 <?php
 
-namespace TaskFiend\Data;
+namespace Kjgcoop\TaskFiend\Data;
 
 class TasksOnDayResponse
 {

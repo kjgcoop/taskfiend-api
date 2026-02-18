@@ -1,11 +1,11 @@
 <?php
 
-namespace TaskFiend;
+namespace Kjgcoop\TaskFiend;
 
 use DateTimeInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use TaskFiend\Data\TasksOnDayResponse;
+use Kjgcoop\TaskFiend\Data\TasksOnDayResponse;
 
 class TaskFiendClient
 {
