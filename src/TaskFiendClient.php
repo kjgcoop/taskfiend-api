@@ -13,12 +13,16 @@ class TaskFiendClient
 
     /**
      * @param string $baseUrl  The base URL of your Task Fiend instance (e.g. "https://example.com/api")
-     * @param array  $options  Additional Guzzle client options (e.g. ['headers' => ['Authorization' => 'Bearer ...']])
+     * @param string $apiKey   API key sent as a Bearer token on every request
+     * @param array  $options  Additional Guzzle client options
      */
-    public function __construct(string $baseUrl, array $options = [])
+    public function __construct(string $baseUrl, string $apiKey, array $options = [])
     {
         $this->httpClient = new Client(array_merge($options, [
             'base_uri' => rtrim($baseUrl, '/') . '/',
+            'headers' => array_merge($options['headers'] ?? [], [
+                'Authorization' => "Bearer {$apiKey}",
+            ]),
         ]));
     }
 
