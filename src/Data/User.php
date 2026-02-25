@@ -25,7 +25,7 @@ class User
             emailVerifiedAt: $data['email_verified_at'],
             createdAt: $data['created_at'],
             updatedAt: $data['updated_at'],
-            profileImage: $data['profile_image'],
+            profileImage: '',
         );
     }
 }
