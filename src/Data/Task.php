@@ -18,7 +18,7 @@ class Task
         public readonly ?string $recurrencePattern,
         public readonly string $createdAt,
         public readonly string $updatedAt,
-        public readonly string $date,
+        public readonly ?string $date,
         public readonly ?string $time,
         public readonly ?int $parentId,
         public readonly bool $recurrenceFloating,
