@@ -42,4 +42,21 @@ class TaskFiendClient
             json_decode($response->getBody()->getContents(), true)
         );
     }
+
+    /**
+     * Retrieve all tasks completed on a given day.
+     *
+     * Accepts any DateTimeInterface value, including Carbon instances.
+     *
+     * @throws GuzzleException
+     */
+    public function getCompletedTasks(DateTimeInterface $date): TasksOnDayResponse
+    {
+        $formatted = $date->format('Y-m-d');
+        $response = $this->httpClient->get("tasks/completed/{$formatted}");
+
+        return TasksOnDayResponse::fromArray(
+            json_decode($response->getBody()->getContents(), true)
+        );
+    }
 }
