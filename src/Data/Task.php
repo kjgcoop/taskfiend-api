@@ -26,6 +26,7 @@ class Task
         public readonly Project $project,
         public readonly array $tags,
         public readonly array $assignees,
+        public readonly ?string $latestComment,
     ) {}
 
     public static function fromArray(array $data): self
@@ -48,6 +49,7 @@ class Task
             project: Project::fromArray($data['project']),
             tags: array_map(fn(array $t) => Tag::fromArray($t), $data['tags']),
             assignees: array_map(fn(array $a) => User::fromArray($a), $data['assignees']),
+            latestComment: $data['latest_comment'] ?: null,
         );
     }
 }
