@@ -28,6 +28,7 @@ class Task
         public readonly array $assignees,
         /** @param Comment[] $comments */
         public readonly array $comments,
+        public readonly string $url,
     ) {}
 
     public static function fromArray(array $data): self
@@ -51,6 +52,7 @@ class Task
             tags: array_map(fn(array $t) => Tag::fromArray($t), $data['tags']),
             assignees: array_map(fn(array $a) => User::fromArray($a), $data['assignees']),
             comments: array_map(fn(array $c) => Comment::fromArray($c), $data['comments']),
+            url: $data['url'],
         );
     }
 }

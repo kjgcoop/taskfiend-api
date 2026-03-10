@@ -13,6 +13,7 @@ class Project
         public readonly string $createdAt,
         public readonly string $updatedAt,
         public readonly bool $isInbox,
+        public readonly string $url,
     ) {}
 
     public static function fromArray(array $data): self
@@ -26,6 +27,7 @@ class Project
             createdAt: $data['created_at'],
             updatedAt: $data['updated_at'],
             isInbox: (bool) $data['is_inbox'],
+            url: $data['url'],
         );
     }
 }
